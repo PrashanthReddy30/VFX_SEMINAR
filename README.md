@@ -3,19 +3,14 @@
 A fully interactive seminar presentation website built for VFX students by **Prashanth-Web-Lab**.
 
 ## 🎬 About
-This is a 14-slide interactive web seminar covering everything VFX students need to know:
-- Industry overview & India's VFX boom
-- VFX roles & career paths (Roto, Compositing, FX, 3D, Matchmove, Motion Graphics)
-- Software tools (Nuke, Houdini, Maya, Blender, After Effects, etc.)
-- Salary guide — India 2025 + International
-- Top studios in India & worldwide
-- How to build a portfolio & what to include
-- Resume vs Portfolio comparison
-- How HRs review & hire VFX artists
-- Freelancing tips & platforms
-- Free & paid learning resources
-- Live interactive portfolio demo
-- Services by Prashanth-Web-Lab
+This is an eight-slide interactive seminar that helps VFX students:
+- Understand what a portfolio is and how it helps present their work
+- Learn how recruiters review resumes, demo reels, and portfolio links
+- Explore VFX roles, including Roto, Paint, Compositing, Matchmove, FX, and 3D
+- Compare resumes and portfolios
+- Choose project examples and learn what to show in each breakdown
+- Explore an interactive sample portfolio
+- Learn about portfolio website design services from Prashanth-Web-Lab
 
 ## 🚀 Live Demo
 Open `index.html` in any browser — no build step required.
