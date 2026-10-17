@@ -1,220 +1,414 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>VFX Portfolio Seminar · Prashanth-Web-Lab</title>
-<style>
-:root{--bg:#070b1a;--card:#0f1731;--fg:#eaf2ff;--mut:#9db0d3;--c1:#22d3ee;--c2:#8b5cf6;--ok:#34d399;--bad:#f87171;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-:root[data-theme="dark"]{--bg:#070b1a}
-*{box-sizing:border-box}html,body{height:100%;margin:0}
-body{background:radial-gradient(800px 500px at 85% 0,#2a1f7a55,transparent),radial-gradient(700px 400px at 0 100%,#0e4a6a55,transparent),var(--bg);color:var(--fg);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;overflow:hidden}
-header{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:5;display:flex;justify-content:space-between;align-items:center;padding:12px 20px;background:#070b1acc;backdrop-filter:blur(10px);border-bottom:1px solid #ffffff14;font-size:14px}
-header b{letter-spacing:.04em}header b i{color:var(--c1);font-style:normal}header span{color:var(--mut)}
-.slide{position:absolute;inset:0;display:none;padding:70px 20px 96px;overflow-y:auto}
-.slide.on{display:flex;animation:in .4s ease}
-@keyframes in{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-.in{width:100%;max-width:1060px;margin:auto}
-.two{display:grid;grid-template-columns:1.1fr 1fr;gap:30px;align-items:center}
-@media(max-width:820px){.two{grid-template-columns:1fr}}
-.tag{display:inline-block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--c1);border:1px solid #22d3ee55;padding:5px 12px;border-radius:99px}
-h1{font-size:clamp(30px,5.4vw,54px);line-height:1.08;margin:14px 0}
-h2{font-size:clamp(24px,4vw,38px);margin:12px 0 6px;line-height:1.15}
-h1 span,h2 span{background:linear-gradient(90deg,var(--c1),var(--c2));-webkit-background-clip:text;background-clip:text;color:transparent}
-p,li{color:var(--mut);font-size:clamp(15px,1.9vw,17px);line-height:1.65}
-.btn,.tb{font:inherit;font-weight:700;border:1px solid #ffffff2a;background:#ffffff12;color:var(--fg);padding:11px 18px;border-radius:12px;cursor:pointer;text-decoration:none;display:inline-block}
-.btn{background:linear-gradient(90deg,var(--c1),var(--c2));color:#05101f;border:0}
-.tb.on{background:linear-gradient(90deg,var(--c1),var(--c2));color:#05101f;border:0}
-.row{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0}
-.panel{background:var(--card);border:1px solid #ffffff1c;border-radius:18px;padding:18px}
-.panel h3{margin:0 0 6px;font-size:21px}.panel p{margin:6px 0}
-.art{background:linear-gradient(160deg,#111a3e,#0b1230);border:1px solid #ffffff1c;border-radius:22px;padding:14px;display:flex;align-items:center;justify-content:center}
-.art svg{width:100%;height:auto;max-height:340px}
-.chip{display:inline-block;background:#22d3ee1f;border:1px solid #22d3ee44;color:var(--c1);padding:4px 11px;border-radius:99px;font-size:13px;margin:3px 3px 3px 0}
-.nav{position:fixed;left:0;right:0;bottom:env(safe-area-inset-bottom,0px);display:flex;align-items:center;justify-content:center;gap:14px;padding:14px;background:linear-gradient(0deg,#070b1a,#070b1a00);z-index:5}
-.dots{display:flex;gap:6px}.dots i{width:8px;height:8px;border-radius:9px;background:#ffffff33;transition:.3s}.dots i.on{width:24px;background:var(--c1)}
-.avatar{width:min(300px,70vw);aspect-ratio:1;border-radius:50%;padding:6px;background:conic-gradient(var(--c1),var(--c2),var(--c1));position:relative}
-.avatar img{width:100%;height:100%;border-radius:50%;object-fit:cover;display:block;border:4px solid var(--bg)}
-.avatar em{position:absolute;font-style:normal;font-size:12px;font-weight:700;padding:7px 11px;border-radius:10px;background:#0b1230ee;border:1px solid #22d3ee66}
-.steps{display:flex;gap:8px;flex-wrap:wrap}.steps .tb{flex:1;min-width:110px;font-size:13px;padding:10px 8px}
-table{width:100%;border-collapse:collapse;font-size:14px}th,td{padding:10px 8px;border-bottom:1px solid #ffffff17;text-align:left;vertical-align:top}th{color:var(--c1)}td:first-child{color:var(--fg);font-weight:700}td{color:var(--mut)}
-.gal{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-@media(max-width:620px){.gal{grid-template-columns:repeat(2,1fr)}}
-.gal button{padding:0;border:2px solid #ffffff1c;border-radius:14px;overflow:hidden;background:var(--card);cursor:pointer;color:var(--fg);font:inherit;font-weight:700;text-align:left}
-.gal button.on{border-color:var(--c1)}.gal svg{display:block;width:100%}.gal span{display:block;padding:8px 10px;font-size:13px}
-.site{border:1px solid #ffffff2a;border-radius:14px;overflow:hidden;background:#0b1126}
-.site .bar{display:flex;gap:6px;align-items:center;padding:9px 12px;background:#141c3a;flex-wrap:wrap}
-.site .bar b{margin-right:auto;font-size:14px}.site .bar button{font:inherit;font-size:13px;color:var(--mut);background:none;border:0;cursor:pointer;padding:5px 8px;border-radius:8px}
-.site .bar button.on{background:#22d3ee22;color:var(--c1)}
-.view{padding:16px;min-height:210px}
-.play{height:150px;border-radius:12px;background:linear-gradient(135deg,#1d2a6a,#5b21b6 60%,#0e7490);display:flex;align-items:center;justify-content:center;font-size:44px;cursor:pointer;position:relative}
-.pb{position:absolute;left:0;bottom:0;height:5px;background:var(--c1);width:0}.pb.go{width:100%;transition:width 8s linear}
-.pj{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.pj div{height:90px;border-radius:10px;display:flex;align-items:end;padding:8px;font-size:12px;font-weight:700;cursor:pointer;color:#fff}
-.num{display:flex;gap:12px;align-items:flex-start;margin:9px 0}.num b{flex:none;width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--c1),var(--c2));color:#05101f;display:flex;align-items:center;justify-content:center}
-.num div{color:var(--mut);font-size:15px;line-height:1.5}.num div strong{color:var(--fg)}
-</style></head>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#030305">
+  <meta name="description" content="Build a VFX portfolio that shows what you can do. Explore cinematic portfolio design and plans from Prashanth-Web-Lab.">
+  <title>VFX Portfolio — Build · Show · Grow</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #030305;
+      --text: #f2f8fa;
+      --muted: #98a8b0;
+      --cyan: #06b6d4;
+      --cyan-soft: rgba(6,182,212,.15);
+      --orange: #ff9900;
+      --max: 1160px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      scroll-behavior: smooth;
+      scroll-padding-top: 88px;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      min-width: 320px;
+      margin: 0;
+      overflow-x: hidden;
+      color: var(--text);
+      background: radial-gradient(ellipse at 83% 10%, rgba(6,182,212,.09), transparent 33rem), radial-gradient(ellipse at 7% 45%, rgba(6,182,212,.045), transparent 27rem), var(--bg);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    button, input { font: inherit; }
+    button, a, input { -webkit-tap-highlight-color: transparent; }
+    .topbar {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      min-height: 76px;
+      padding: 12px max(24px, calc((100vw - var(--max)) / 2));
+      border-bottom: 1px solid rgba(255,255,255,.065);
+      background: rgba(3,3,5,.78);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+    .brand { display: inline-flex; align-items: center; gap: 11px; font-size: 13px; font-weight: 720; letter-spacing: .025em; white-space: nowrap; }
+    .brand-mark { display: grid; width: 34px; height: 34px; place-items: center; border: 1px solid rgba(6,182,212,.45); border-radius: 10px; background: var(--cyan-soft); color: #67e8f9; font-size: 11px; }
+    .brand-copy { display: grid; line-height: 1.3; }
+    .brand-copy small { margin-top: 3px; color: var(--muted); font-size: 8px; letter-spacing: .17em; }
+    .topnav { display: flex; align-items: center; gap: clamp(17px, 3vw, 36px); color: #b7c4c9; font-size: 12px; }
+    .topnav a, .footer-links a { transition: color .2s ease; }
+    .topnav a:hover, .footer-links a:hover { color: #67e8f9; }
+    .header-cta, .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 42px;
+      padding: 0 17px;
+      border: 1px solid rgba(6,182,212,.42);
+      border-radius: 999px;
+      background: rgba(6,182,212,.09);
+      color: #a5f3fc;
+      font-size: 12px;
+      font-weight: 700;
+      transition: .2s ease;
+    }
+    .header-cta:hover, .button:hover { transform: translateY(-2px); border-color: var(--cyan); background: rgba(6,182,212,.17); box-shadow: 0 0 24px rgba(6,182,212,.14); }
+    main { overflow: clip; }
+    .wrap { width: min(var(--max), calc(100% - 48px)); margin-inline: auto; }
+    .section { position: relative; padding-block: clamp(130px, 17vh, 190px); scroll-margin-top: 60px; }
+    .section::before { position: absolute; top: 0; left: 50%; width: min(88%, 1100px); height: 1px; background: linear-gradient(90deg, transparent, rgba(6,182,212,.17), transparent); content: ""; transform: translateX(-50%); }
+    .hero { display: flex; min-height: min(900px, 100svh); align-items: center; padding-block: 125px 100px; }
+    .hero-grid { display: grid; grid-template-columns: 1.02fr .98fr; align-items: center; gap: clamp(36px, 7vw, 88px); }
+    .eyebrow { display: inline-flex; align-items: center; gap: 10px; color: #8eeaf4; font-size: 10px; font-weight: 720; letter-spacing: .19em; text-transform: uppercase; }
+    .eyebrow::before { width: 19px; height: 1px; background: var(--cyan); box-shadow: 0 0 10px var(--cyan); content: ""; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { margin-bottom: 16px; font-size: clamp(68px, 11vw, 145px); font-weight: 800; letter-spacing: -.095em; line-height: .78; }
+    h1 span { display: inline-block; margin-top: 14px; color: transparent; background: linear-gradient(105deg, #edfcff 5%, #65e8f5 45%, #087c98 100%); background-clip: text; -webkit-background-clip: text; }
+    .hero-subtitle { margin-bottom: 20px; color: #f5fcff; font-size: clamp(14px, 1.55vw, 18px); font-weight: 660; letter-spacing: .29em; }
+    .hero-subtitle span { padding-inline: 5px; color: var(--cyan); }
+    .hero-copy { max-width: 460px; margin-bottom: 28px; color: var(--muted); font-size: 15px; }
+    .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 18px; }
+    .button-primary { min-height: 48px; padding-inline: 22px; border-color: var(--cyan); background: var(--cyan); color: #001116; }
+    .button-primary:hover { background: #67e8f9; color: #001116; }
+    .text-link { color: #b6c4ca; font-size: 12px; }
+    .text-link span { padding-left: 5px; color: var(--cyan); }
+    .hero-art { position: relative; padding: 16px; border: 1px solid rgba(255,255,255,.12); border-radius: 20px; background: linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.015)); box-shadow: 0 36px 100px rgba(0,0,0,.53), 0 0 75px rgba(6,182,212,.075); backdrop-filter: blur(16px); transform: perspective(1100px) rotateY(-7deg) rotateX(2deg); }
+    .hero-art::before, .hero-art::after { position: absolute; z-index: 1; width: 24px; height: 24px; border-color: #54e6f4; border-style: solid; content: ""; filter: drop-shadow(0 0 6px rgba(6,182,212,.7)); }
+    .hero-art::before { top: -1px; left: -1px; border-width: 1px 0 0 1px; border-radius: 15px 0 0; }
+    .hero-art::after { right: -1px; bottom: -1px; border-width: 0 1px 1px 0; border-radius: 0 0 15px; }
+    .art-toolbar { display: flex; align-items: center; justify-content: space-between; padding: 0 4px 13px; color: #9db0b9; font-size: 9px; letter-spacing: .13em; text-transform: uppercase; }
+    .live-dot { display: inline-flex; align-items: center; gap: 7px; color: #a5f3fc; }
+    .live-dot::before { width: 6px; height: 6px; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 11px var(--cyan); content: ""; }
+    .hero-image { display: block; width: 100%; height: auto; overflow: hidden; border-radius: 10px; background: #080d18; }
+    .art-footer { display: flex; justify-content: space-between; gap: 12px; padding: 12px 4px 0; color: #9db0b9; font-size: 9px; letter-spacing: .08em; }
+    .art-footer strong { color: #d9fbff; font-weight: 590; }
+    .scroll-cue { position: absolute; bottom: 34px; left: 50%; display: flex; align-items: center; gap: 10px; color: #82959d; font-size: 9px; letter-spacing: .2em; text-transform: uppercase; transform: translateX(-50%); }
+    .scroll-cue::after { width: 32px; height: 1px; background: linear-gradient(90deg, var(--cyan), transparent); content: ""; }
+    .section-head { max-width: 700px; margin-bottom: 45px; }
+    .section-head h2 { margin: 14px 0 12px; font-size: clamp(40px, 6vw, 74px); font-weight: 730; letter-spacing: -.07em; line-height: 1.03; }
+    .section-head h2 span, .accent { color: #67e8f9; }
+    .section-head > p { max-width: 570px; margin-bottom: 0; color: var(--muted); font-size: 15px; }
+    .topic-label { display: flex; align-items: center; gap: 12px; margin-bottom: 17px; color: #70dbe8; font-size: 10px; font-weight: 650; letter-spacing: .17em; text-transform: uppercase; }
+    .topic-label span { color: #61737b; font-variant-numeric: tabular-nums; }
+    .topic-label::after { width: 42px; height: 1px; background: rgba(6,182,212,.42); content: ""; }
+    .glass-card { position: relative; border: 1px solid rgba(255,255,255,.105); border-radius: 18px; background: linear-gradient(145deg, rgba(255,255,255,.055), rgba(255,255,255,.018)); box-shadow: inset 0 1px 0 rgba(255,255,255,.035), 0 20px 80px rgba(0,0,0,.16); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); transition: border-color .25s ease, box-shadow .25s ease, transform .18s ease-out; transform-style: preserve-3d; }
+    .glass-card::before, .glass-card::after { position: absolute; z-index: 2; width: 22px; height: 22px; border-color: rgba(6,182,212,.9); border-style: solid; content: ""; opacity: .73; transition: opacity .25s ease, filter .25s ease; pointer-events: none; }
+    .glass-card::before { top: -1px; left: -1px; border-width: 1px 0 0 1px; border-radius: 17px 0 0; }
+    .glass-card::after { right: -1px; bottom: -1px; border-width: 0 1px 1px 0; border-radius: 0 0 17px; }
+    .glass-card:hover { border-color: rgba(6,182,212,.34); box-shadow: inset 0 1px 0 rgba(255,255,255,.055), 0 28px 90px rgba(0,0,0,.29), 0 0 35px rgba(6,182,212,.08); }
+    .glass-card:hover::before, .glass-card:hover::after { opacity: 1; filter: drop-shadow(0 0 8px rgba(6,182,212,.85)); }
+    .definition-grid { display: grid; grid-template-columns: .88fr 1.12fr; align-items: stretch; gap: 20px; }
+    .definition-card { padding: clamp(27px, 5vw, 51px); }
+    .definition-card h3 { max-width: 390px; margin: 18px 0; font-size: clamp(30px, 4vw, 49px); font-weight: 670; letter-spacing: -.055em; line-height: 1.1; }
+    .definition-card > p { max-width: 430px; margin-bottom: 28px; color: var(--muted); font-size: 14px; }
+    .definition-mark { display: inline-grid; width: 46px; height: 46px; place-items: center; border: 1px solid rgba(6,182,212,.28); border-radius: 13px; background: rgba(6,182,212,.08); color: #77eaf3; font-size: 21px; }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag { padding: 6px 10px; border: 1px solid rgba(255,255,255,.11); border-radius: 999px; color: #b5c4c9; font-size: 10px; }
+    .proof-board { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 12px; padding: 15px; }
+    .proof-tile { position: relative; display: flex; min-height: 133px; flex-direction: column; justify-content: space-between; overflow: hidden; padding: 17px; border: 1px solid rgba(255,255,255,.08); border-radius: 11px; background: radial-gradient(ellipse at 79% 13%, rgba(6,182,212,.18), transparent 70%), rgba(3,8,12,.7); }
+    .proof-tile:first-child { grid-row: span 2; min-height: 280px; background: radial-gradient(ellipse at 50% 65%, rgba(8,100,126,.25), transparent 61%), linear-gradient(160deg, rgba(17,33,40,.55), rgba(4,7,10,.9)); }
+    .proof-num { color: #58dceb; font-size: 9px; letter-spacing: .14em; }
+    .proof-tile h3 { max-width: 170px; margin: 0 0 3px; font-size: 15px; font-weight: 620; }
+    .proof-tile p { max-width: 180px; margin: 0; color: #8698a0; font-size: 10px; line-height: 1.6; }
+    .tile-art { display: grid; flex: 1; place-items: center; color: #75e8f4; font-size: clamp(40px, 7vw, 78px); text-shadow: 0 0 38px rgba(6,182,212,.36); }
+    .tile-art span { display: grid; width: clamp(70px, 11vw, 105px); aspect-ratio: 1; place-items: center; border: 1px solid rgba(103,232,249,.27); border-radius: 50%; background: radial-gradient(circle, rgba(6,182,212,.2), rgba(6,182,212,.015) 68%); box-shadow: 0 0 55px rgba(6,182,212,.1), inset 0 0 24px rgba(6,182,212,.1); }
+    .comparison-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; perspective: 1100px; }
+    .comparison-card { min-height: 390px; padding: clamp(27px, 5vw, 47px); }
+    .card-top { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 34px; }
+    .card-top h3 { margin: 0; font-size: clamp(28px, 4vw, 42px); letter-spacing: -.06em; }
+    .chip { padding: 6px 10px; border: 1px solid rgba(255,255,255,.13); border-radius: 999px; color: #94a3aa; font-size: 9px; font-weight: 650; letter-spacing: .1em; text-transform: uppercase; }
+    .comparison-card--show { border-color: rgba(6,182,212,.25); background: linear-gradient(145deg, rgba(6,182,212,.085), rgba(255,255,255,.019) 65%); }
+    .comparison-card--show .chip { border-color: rgba(6,182,212,.31); color: #80eaf2; }
+    .comparison-verb { display: block; margin-bottom: 19px; color: var(--muted); font-size: 12px; letter-spacing: .04em; }
+    .comparison-list { display: grid; gap: 0; margin: 0; padding: 0; list-style: none; }
+    .comparison-list li { display: grid; grid-template-columns: 26px 1fr; align-items: baseline; gap: 9px; padding: 13px 0; border-top: 1px solid rgba(255,255,255,.08); color: #cad4d8; font-size: 14px; }
+    .comparison-list li::before { color: #677980; content: "—"; }
+    .comparison-card--show .comparison-list li::before { color: #51deed; content: "↗"; }
+    .slider-card { overflow: hidden; padding: clamp(12px, 2vw, 20px); }
+    .comparison { --split: 50%; position: relative; isolation: isolate; overflow: hidden; min-height: 280px; aspect-ratio: 16 / 8.2; border: 1px solid rgba(255,255,255,.11); border-radius: 11px; background: #1c8d16; }
+    .comparison__scene { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .comparison__after { z-index: 1; clip-path: inset(0 calc(100% - var(--split)) 0 0); }
+    .comparison__labels { position: absolute; inset: 16px 16px auto; z-index: 3; display: flex; justify-content: space-between; gap: 12px; pointer-events: none; }
+    .comparison__label { padding: 6px 10px; border: 1px solid rgba(255,255,255,.24); border-radius: 999px; background: rgba(3,5,8,.68); color: #f5fcff; font-size: 9px; font-weight: 700; letter-spacing: .12em; backdrop-filter: blur(10px); }
+    .comparison__divider { position: absolute; inset: 0 auto 0 var(--split); z-index: 2; width: 2px; background: #f4fcff; box-shadow: 0 0 12px rgba(255,255,255,.8), 0 0 28px rgba(6,182,212,.65); transform: translateX(-1px); pointer-events: none; }
+    .comparison__handle { position: absolute; top: 50%; left: 50%; display: grid; width: 42px; height: 42px; place-items: center; border: 1px solid rgba(255,255,255,.75); border-radius: 50%; background: rgba(3,12,16,.79); color: white; font-size: 17px; box-shadow: 0 0 25px rgba(0,0,0,.4); transform: translate(-50%, -50%); backdrop-filter: blur(8px); }
+    .comparison__control { position: absolute; inset: 0; z-index: 4; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: ew-resize; }
+    .comparison__control:focus-visible { outline: 3px solid #f4fcff; outline-offset: -4px; opacity: .001; }
+    .slider-caption { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; padding: 13px 4px 2px; color: #9eafb6; font-size: 11px; }
+    .finale { padding-block: clamp(135px, 22vh, 245px); text-align: center; }
+    .finale-card { overflow: hidden; padding: clamp(45px, 9vw, 104px) 24px; }
+    .finale-card::before, .finale-card::after { width: 35px; height: 35px; }
+    .finale h2 { max-width: 950px; margin: 17px auto 25px; font-size: clamp(42px, 8.4vw, 105px); font-weight: 820; letter-spacing: -.075em; line-height: .98; }
+    .finale h2 span { color: transparent; background: linear-gradient(90deg, #e9fcff, #56e4f2 65%, #16879a); background-clip: text; -webkit-background-clip: text; }
+    .finale p { max-width: 480px; margin: 0 auto 27px; color: var(--muted); font-size: 14px; }
+    .pricing-head { display: flex; align-items: end; justify-content: space-between; gap: 30px; margin-bottom: 47px; }
+    .pricing-head .section-head { margin: 0; }
+    .pricing-note { max-width: 180px; margin-bottom: 9px; color: var(--muted); font-size: 11px; }
+    .pricing-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: stretch; gap: 17px; perspective: 1200px; }
+    .pricing-card { display: flex; min-width: 0; flex-direction: column; padding: 30px 26px 26px; }
+    .pricing-card--popular { z-index: 1; border-color: rgba(255,153,0,.53); background: radial-gradient(ellipse at 85% 0, rgba(255,153,0,.13), transparent 55%), linear-gradient(145deg, rgba(255,153,0,.065), rgba(255,255,255,.02) 68%); box-shadow: 0 0 42px rgba(255,153,0,.14), inset 0 1px 0 rgba(255,255,255,.055); transform: scale(1.045); }
+    .pricing-card--popular::before, .pricing-card--popular::after { border-color: rgba(255,153,0,.97); filter: drop-shadow(0 0 7px rgba(255,153,0,.72)); }
+    .popular-badge { position: absolute; top: -13px; left: 50%; padding: 5px 12px; border: 1px solid rgba(255,178,55,.72); border-radius: 999px; background: #281400; color: #ffc267; font-size: 9px; font-weight: 750; letter-spacing: .08em; white-space: nowrap; box-shadow: 0 0 23px rgba(255,153,0,.2); transform: translateX(-50%); }
+    .plan-name { margin: 2px 0 14px; color: #dce7ea; font-size: 15px; font-weight: 650; }
+    .plan-price { display: flex; align-items: baseline; gap: 5px; margin-bottom: 10px; }
+    .plan-price span { color: #93a5ad; font-size: 20px; }
+    .plan-price strong { font-size: clamp(36px, 4vw, 49px); font-weight: 740; letter-spacing: -.065em; line-height: 1.1; }
+    .pricing-card--popular .plan-price span, .pricing-card--popular .plan-price strong { color: #ffd18a; }
+    .plan-summary { min-height: 40px; margin-bottom: 23px; color: var(--muted); font-size: 11px; }
+    .plan-rule { height: 1px; margin-bottom: 19px; background: rgba(255,255,255,.1); }
+    .plan-features { display: grid; gap: 13px; margin: 0 0 30px; padding: 0; list-style: none; }
+    .plan-features li { display: flex; align-items: baseline; gap: 10px; color: #c0ccd1; font-size: 12px; }
+    .plan-features li::before { color: #59e5f1; content: "✓"; }
+    .pricing-card--popular .plan-features li::before { color: #ffb84d; }
+    .plan-button { width: 100%; min-height: 45px; margin-top: auto; }
+    .pricing-card--popular .plan-button { border-color: var(--orange); background: var(--orange); color: #1b1000; }
+    .pricing-card--popular .plan-button:hover { background: #ffbe59; }
+    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; clip-path: inset(50%); }
+    footer { padding-block: 27px 36px; border-top: 1px solid rgba(255,255,255,.075); }
+    .footer-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; }
+    .footer-copy { margin: 0; color: #778890; font-size: 10px; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 20px; color: #a6b5ba; font-size: 10px; }
+    .reveal { opacity: 0; transform: translateY(34px); transition: opacity .72s ease, transform .72s cubic-bezier(.2,.7,.25,1); }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+    .delay-1 { transition-delay: .1s; }
+    .delay-2 { transition-delay: .2s; }
+    @media (max-width: 850px) {
+      .topbar { padding-inline: 22px; }
+      .hero { min-height: auto; padding-top: 142px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 38px; }
+      .hero-copy { max-width: 600px; }
+      .hero-art { width: min(100%, 670px); margin-inline: auto; transform: none; }
+      .scroll-cue { position: relative; bottom: auto; left: auto; margin-top: 48px; transform: none; }
+      .hero { display: block; }
+      .definition-grid { grid-template-columns: 1fr; }
+      .definition-card { min-height: 325px; }
+      .proof-board { grid-template-columns: 1.12fr 1fr 1fr; grid-template-rows: 1fr; }
+      .proof-tile:first-child { grid-row: auto; min-height: 192px; }
+      .proof-tile { min-height: 192px; }
+      .pricing-grid { gap: 12px; }
+      .pricing-card { padding-inline: 20px; }
+    }
+    @media (max-width: 620px) {
+      .topbar { min-height: 68px; gap: 10px; padding-inline: 16px; }
+      .brand { gap: 8px; font-size: 11px; }
+      .brand-mark { width: 31px; height: 31px; }
+      .brand-copy small { font-size: 7px; }
+      .topnav { display: none; }
+      .header-cta { min-height: 37px; padding-inline: 12px; font-size: 10px; }
+      .wrap { width: min(var(--max), calc(100% - 34px)); }
+      .hero { padding-top: 127px; padding-bottom: 104px; }
+      h1 { font-size: clamp(61px, 17vw, 94px); }
+      .hero-subtitle { font-size: 12px; letter-spacing: .2em; }
+      .hero-copy { font-size: 13px; }
+      .hero-art { padding: 10px; border-radius: 15px; }
+      .art-toolbar, .art-footer { font-size: 7px; }
+      .section { padding-block: 118px; }
+      .section-head { margin-bottom: 30px; }
+      .section-head h2 { font-size: clamp(39px, 11vw, 59px); }
+      .section-head > p { font-size: 13px; }
+      .definition-grid { gap: 13px; }
+      .definition-card { min-height: auto; padding: 27px 23px; }
+      .definition-card h3 { font-size: 33px; }
+      .proof-board { gap: 8px; padding: 9px; }
+      .proof-tile, .proof-tile:first-child { min-height: 154px; padding: 12px; }
+      .proof-tile h3 { font-size: 12px; }
+      .proof-tile p { font-size: 9px; }
+      .proof-num { font-size: 8px; }
+      .comparison-grid { grid-template-columns: 1fr; gap: 13px; }
+      .comparison-card { min-height: 0; padding: 26px 23px; }
+      .card-top { margin-bottom: 22px; }
+      .card-top h3 { font-size: 32px; }
+      .comparison-verb { margin-bottom: 12px; }
+      .comparison-list li { padding-block: 11px; font-size: 12px; }
+      .comparison { min-height: 220px; aspect-ratio: 1.28 / 1; }
+      .comparison__labels { inset: 10px 9px auto; gap: 5px; }
+      .comparison__label { padding: 5px 7px; font-size: 7px; letter-spacing: .07em; }
+      .comparison__handle { width: 36px; height: 36px; font-size: 15px; }
+      .slider-caption { font-size: 9px; }
+      .finale { padding-block: 120px; }
+      .finale-card { padding: 68px 18px; }
+      .finale h2 { font-size: clamp(43px, 11.7vw, 66px); }
+      .finale p { font-size: 12px; }
+      .pricing-head { display: block; margin-bottom: 34px; }
+      .pricing-note { max-width: 260px; margin-top: 15px; }
+      .pricing-grid { max-width: 410px; grid-template-columns: 1fr; gap: 22px; margin-inline: auto; }
+      .pricing-card { padding: 27px 25px 23px; }
+      .pricing-card--popular { transform: none; }
+      .plan-name { font-size: 14px; }
+      .plan-price strong { font-size: 43px; }
+      .plan-summary { min-height: 0; }
+      .footer-inner { align-items: flex-start; flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      :root { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
 <body>
-<header><b>◆ Prashanth<i>-Web-Lab</i></b><span>VFX Portfolio Seminar</span></header>
+  <header class="topbar">
+    <a class="brand" href="#home" aria-label="Prashanth-Web-Lab, back to top"><span class="brand-mark">PL</span><span class="brand-copy">Prashanth-Web-Lab<small>VFX PORTFOLIO STUDIO</small></span></a>
+    <nav class="topnav" aria-label="Main navigation"><a href="#portfolio">Portfolio</a><a href="#comparison">Resume vs portfolio</a><a href="#transformation">Before &amp; after</a><a href="#plans">Plans</a></nav>
+    <a class="header-cta" href="https://wa.me/919666166967" target="_blank" rel="noopener noreferrer">Let’s talk <span aria-hidden="true">↗</span></a>
+  </header>
+  <main>
+    <section class="hero" id="home" aria-labelledby="hero-title">
+      <div class="wrap">
+        <div class="hero-grid">
+          <div class="hero-content reveal">
+            <div class="eyebrow">A better way to show your craft</div>
+            <h1 id="hero-title">VFX<br><span>PORTFOLIO</span></h1>
+            <p class="hero-subtitle">BUILD <span>•</span> SHOW <span>•</span> GROW</p>
+            <p class="hero-copy">Your next opportunity starts with the work you put in front of the world. Make every frame count with a portfolio built around your craft.</p>
+            <div class="hero-actions"><a class="button button-primary" href="#portfolio">Explore the portfolio <span aria-hidden="true">↓</span></a><a class="text-link" href="#plans">View website plans<span aria-hidden="true">↗</span></a></div>
+          </div>
+          <div class="hero-art reveal delay-1" aria-label="A cinematic VFX scene preview">
+            <div class="art-toolbar"><span>Portfolio preview · 01</span><span class="live-dot">Made to stand out</span></div>
+            <svg class="hero-image" viewBox="0 0 720 470" role="img" aria-labelledby="hero-art-title hero-art-desc">
+              <title id="hero-art-title">Cinematic VFX portfolio artwork</title><desc id="hero-art-desc">A glowing blue planet rises behind a futuristic mountain landscape beneath a field of stars.</desc>
+              <defs><linearGradient id="space-bg" x2=".9" y2="1"><stop stop-color="#080d1c"/><stop offset=".55" stop-color="#101f38"/><stop offset="1" stop-color="#071117"/></linearGradient><radialGradient id="planet-fill" cx="35%" cy="30%"><stop stop-color="#d8feff"/><stop offset=".28" stop-color="#44ccdf"/><stop offset=".72" stop-color="#13708e"/><stop offset="1" stop-color="#082239"/></radialGradient><linearGradient id="mountain-fill" x2="0" y2="1"><stop stop-color="#34d6e5" stop-opacity=".75"/><stop offset="1" stop-color="#071319"/></linearGradient><filter id="glow"><feGaussianBlur stdDeviation="12"/></filter></defs>
+              <rect width="720" height="470" fill="url(#space-bg)"/><ellipse cx="470" cy="234" rx="206" ry="181" fill="#0cabc1" opacity=".2" filter="url(#glow)"/><circle cx="470" cy="205" r="139" fill="url(#planet-fill)"/><path d="M334 224c73 45 199 65 270 14M345 177c78-36 190-45 257-6" fill="none" stroke="#c2ffff" stroke-opacity=".35" stroke-width="2"/><ellipse cx="470" cy="258" rx="197" ry="45" fill="none" stroke="#63f0f2" stroke-opacity=".7" stroke-width="5" transform="rotate(-13 470 258)"/><path d="M0 354 101 251l63 66 101-159 80 180 77-111 95 109 75-94 128 142v86H0z" fill="url(#mountain-fill)"/><path d="m161 317 104-159 80 180-42-54-37 28-28-54-38 67zM418 338l99-111 95 109-50-42-33 17-32-45-40 65z" fill="#101f2b"/><path d="M0 361c121-41 202-21 301 16s211 7 419-40v133H0z" fill="#071116"/><g fill="#e9ffff"><circle cx="100" cy="79" r="1.4"/><circle cx="203" cy="114" r="1.7"/><circle cx="597" cy="69" r="1.3"/><circle cx="644" cy="164" r="1.7"/><circle cx="80" cy="199" r="1.2"/><circle cx="323" cy="68" r="1.4"/><circle cx="553" cy="342" r="1.2"/></g><path d="M38 414h147" stroke="#0bd2e4" stroke-opacity=".65"/><text x="38" y="438" fill="#b6edf1" font-family="system-ui,sans-serif" font-size="10" letter-spacing="3">A WORLD BEYOND THE FRAME</text>
+            </svg>
+            <div class="art-footer"><span><strong>SHOT 001</strong> &nbsp;·&nbsp; ENVIRONMENT</span><span>REEL &nbsp; / &nbsp; BREAKDOWN</span></div>
+          </div>
+        </div>
+        <a class="scroll-cue" href="#portfolio">Scroll to explore</a>
+      </div>
+    </section>
+    <section class="section" id="portfolio" aria-labelledby="portfolio-title">
+      <div class="wrap">
+        <div class="topic-label reveal"><span>01</span> THE IDEA</div>
+        <div class="section-head reveal delay-1"><h2 id="portfolio-title">What is a <span>portfolio?</span></h2><p>A portfolio turns your skills into visual proof. It brings your strongest shots, breakdowns, and creative decisions together in one place.</p></div>
+        <div class="definition-grid">
+          <article class="glass-card definition-card reveal">
+            <span class="definition-mark" aria-hidden="true">◈</span>
+            <h3>Let your work do the talking.</h3>
+            <p>A clear, focused portfolio helps a studio understand what you made, what you contributed, and how you see each shot through.</p>
+            <div class="tag-row"><span class="tag">Your best work</span><span class="tag">Your process</span><span class="tag">Your point of view</span></div>
+          </article>
+          <div class="glass-card proof-board reveal delay-1" aria-label="Three building blocks of a strong portfolio">
+            <article class="proof-tile"><span class="proof-num">THE FINISHED FRAME</span><div class="tile-art" aria-hidden="true"><span>✳</span></div><div><h3>Show the final shot</h3><p>Lead with work that earns another look.</p></div></article>
+            <article class="proof-tile"><span class="proof-num">THE MAKING OF</span><div><h3>Reveal the breakdown</h3><p>Make your decisions and process visible.</p></div></article>
+            <article class="proof-tile"><span class="proof-num">THE DETAILS</span><div><h3>Credit your contribution</h3><p>Make your role in every project clear.</p></div></article>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="comparison" aria-labelledby="comparison-title">
+      <div class="wrap">
+        <div class="topic-label reveal"><span>02</span> SIDE BY SIDE</div>
+        <div class="section-head reveal delay-1"><h2 id="comparison-title">Resume <span>vs</span> portfolio</h2><p>Both matter. One introduces you; the other puts your craft on screen.</p></div>
+        <div class="comparison-grid">
+          <article class="glass-card comparison-card reveal"><div class="card-top"><h3>Resume</h3><span class="chip">The introduction</span></div><span class="comparison-verb">A resume tells.</span><ul class="comparison-list"><li>Lists your experience and training.</li><li>Names the tools and skills you use.</li><li>Summarizes your roles and background.</li></ul></article>
+          <article class="glass-card comparison-card comparison-card--show reveal delay-1"><div class="card-top"><h3>Portfolio</h3><span class="chip">The proof</span></div><span class="comparison-verb">A portfolio shows.</span><ul class="comparison-list"><li>Shows the shots you actually created.</li><li>Reveals your eye for detail and finish.</li><li>Explains your contribution with breakdowns.</li></ul></article>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="transformation" aria-labelledby="transformation-title">
+      <div class="wrap">
+        <div class="topic-label reveal"><span>03</span> BEFORE / AFTER</div>
+        <div class="section-head reveal delay-1"><h2 id="transformation-title">Let the transformation <span>speak.</span></h2><p>Drag the slider across the frame. See how a raw green-screen plate becomes a cinematic final composite.</p></div>
+        <div class="glass-card slider-card reveal">
+          <div class="comparison" id="comparison-slider" style="--split:50%">
+            <svg class="comparison__scene" viewBox="0 0 1000 560" role="img" aria-label="Original green-screen plate with an actor on a stage">
+              <defs><linearGradient id="green-floor" x2="0" y2="1"><stop stop-color="#45da21"/><stop offset="1" stop-color="#259510"/></linearGradient><radialGradient id="stage-light"><stop stop-color="#a8ff66" stop-opacity=".6"/><stop offset="1" stop-color="#5ae524" stop-opacity="0"/></radialGradient></defs>
+              <rect width="1000" height="560" fill="#31be18"/><rect width="1000" height="560" fill="url(#stage-light)"/><path d="M0 423h1000v137H0z" fill="url(#green-floor)"/><path d="M0 422h1000" stroke="#b9ff9c" stroke-opacity=".4" stroke-width="3"/><g fill="#fff" opacity=".85"><path d="m87 97 20 36H67z"/><path d="m900 74 24 41h-48z"/></g><g fill="#fff" opacity=".8"><circle cx="196" cy="166" r="5"/><circle cx="827" cy="190" r="5"/><circle cx="152" cy="370" r="5"/><circle cx="873" cy="350" r="5"/></g><g stroke="#fff" stroke-opacity=".6" stroke-width="2"><path d="M185 166h22m-11-11v22M816 190h22m-11-11v22M141 370h22m-11-11v22M862 350h22m-11-11v22"/></g><ellipse cx="523" cy="437" rx="107" ry="20" fill="#174c0f" opacity=".4"/><g stroke="#09131b" stroke-linecap="round" stroke-linejoin="round"><circle cx="523" cy="174" r="43" fill="#121c25" stroke-width="7"/><path d="M483 164q4-54 42-54 41 1 43 54-13-18-34-16-24 2-51 16z" fill="#08131c" stroke-width="4"/><path d="M488 223q35-21 70 0l39 137-39 35h-72l-37-35z" fill="#111c27" stroke-width="9"/><path d="m482 242-91 118-22 52q-8 19 10 23 18 3 27-16l101-114M563 242l91 118 22 52q8 19-10 23-18 3-27-16L538 305" fill="none" stroke-width="27"/><path d="m494 385-10 68-32 64q-6 17 13 18h49l26-70 19-78m4 0 14 68 34 64q7 17-13 18h-47l-27-70-18-78" fill="#111c27" stroke-width="13"/></g><rect width="1000" height="560" fill="none" stroke="#d6ffc8" stroke-opacity=".17" stroke-width="2"/>
+            </svg>
+            <svg class="comparison__scene comparison__after" viewBox="0 0 1000 560" role="img" aria-label="Final cinematic composite with the same actor in a dramatic alien landscape">
+              <defs><linearGradient id="final-sky" x2="0" y2="1"><stop stop-color="#081426"/><stop offset=".56" stop-color="#184b63"/><stop offset="1" stop-color="#e37847"/></linearGradient><linearGradient id="final-ground" x2="0" y2="1"><stop stop-color="#763d3a"/><stop offset="1" stop-color="#11101c"/></linearGradient><radialGradient id="final-planet"><stop stop-color="#ffeab5"/><stop offset=".72" stop-color="#ee965d"/><stop offset="1" stop-color="#a83b6b"/></radialGradient><filter id="final-glow"><feGaussianBlur stdDeviation="13"/></filter></defs>
+              <rect width="1000" height="560" fill="url(#final-sky)"/><circle cx="762" cy="151" r="94" fill="#f1a568" opacity=".24" filter="url(#final-glow)"/><circle cx="762" cy="151" r="65" fill="url(#final-planet)"/><path d="M670 153c49 21 124 28 180 0" fill="none" stroke="#ffd8aa" stroke-opacity=".6" stroke-width="3" transform="rotate(-12 762 151)"/><g fill="#ecf6fa" opacity=".9"><circle cx="110" cy="88" r="2"/><circle cx="240" cy="135" r="1.6"/><circle cx="390" cy="69" r="2"/><circle cx="620" cy="101" r="1.5"/><circle cx="914" cy="96" r="2"/><circle cx="860" cy="244" r="1.4"/><circle cx="146" cy="245" r="1.4"/></g><path d="M0 360 91 271l95 42 94-102 112 137 108-81 104 102 87-89 109 54 94-76 106 78v224H0z" fill="#192934"/><path d="m184 313 96-102 112 137-76-46-35 18-35-43-31 59zM598 369l104-90 109 54-68-15-25 18-38-31-30 55z" fill="#33414a"/><path d="M0 421q168-59 326-9t342-12 332-7v167H0z" fill="url(#final-ground)"/><path d="M0 459q220-44 403 6t351-35 246-15" fill="none" stroke="#f4a16b" stroke-opacity=".45" stroke-width="4"/><g stroke="#0b1119" stroke-linecap="round" stroke-linejoin="round"><circle cx="523" cy="174" r="43" fill="#20232b" stroke="#10151d" stroke-width="7"/><path d="M483 164q4-54 42-54 41 1 43 54-13-18-34-16-24 2-51 16z" fill="#090e16" stroke-width="4"/><path d="M488 223q35-21 70 0l39 137-39 35h-72l-37-35z" fill="#192630" stroke-width="9"/><path d="m482 242-91 118-22 52q-8 19 10 23 18 3 27-16l101-114M563 242l91 118 22 52q8 19-10 23-18 3-27-16L538 305" fill="none" stroke-width="27"/><path d="m494 385-10 68-32 64q-6 17 13 18h49l26-70 19-78m4 0 14 68 34 64q7 17-13 18h-47l-27-70-18-78" fill="#192630" stroke-width="13"/></g><path d="M389 389h267" stroke="#ffad69" stroke-opacity=".39" stroke-width="3"/><text x="40" y="519" fill="#f2cdb5" font-family="system-ui,sans-serif" font-size="11" letter-spacing="3">FINAL COMPOSITE · ENVIRONMENT · LIGHT · GRADE</text>
+            </svg>
+            <div class="comparison__labels" aria-hidden="true"><span class="comparison__label">FINAL COMPOSITE</span><span class="comparison__label">RAW GREEN SCREEN</span></div>
+            <div class="comparison__divider" aria-hidden="true"><span class="comparison__handle">↔</span></div>
+            <label class="sr-only" for="comparison-range">Reveal the final composite. Use the arrow keys to move the divider.</label>
+            <input class="comparison__control" id="comparison-range" type="range" min="0" max="100" value="50" aria-label="Compare the final VFX composite with the raw green-screen plate" aria-valuetext="50% final composite">
+          </div>
+          <div class="slider-caption"><span>Drag the divider or use your arrow keys</span><span>RAW PLATE <span class="accent">→</span> FINAL SHOT</span></div>
+        </div>
+      </div>
+    </section>
+    <section class="section finale" id="message" aria-labelledby="message-title">
+      <div class="wrap">
+        <div class="glass-card finale-card reveal">
+          <div class="eyebrow">04 &nbsp; YOUR NEXT FRAME</div>
+          <h2 id="message-title">DON'T JUST SAY<br>YOU CAN DO VFX.<br><span>SHOW IT.</span></h2>
+          <p>Make the work easy to see, the process easy to understand, and your next opportunity easier to imagine.</p>
+          <a class="button button-primary" href="#plans">Build your portfolio <span aria-hidden="true">↓</span></a>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="plans" aria-labelledby="plans-title">
+      <div class="wrap">
+        <div class="pricing-head">
+          <div class="section-head reveal"><div class="topic-label"><span>05</span> YOUR NEXT STEP</div><h2 id="plans-title">Choose your <span class="accent">frame.</span></h2><p>Portfolio website plans for every stage of your creative journey.</p></div>
+          <p class="pricing-note reveal delay-1">Ready to get started? Choose a plan and ask about the next steps.</p>
+        </div>
+        <div class="pricing-grid">
+          <article class="glass-card pricing-card reveal"><h3 class="plan-name">Basic</h3><div class="plan-price"><span>₹</span><strong>1,500</strong></div><p class="plan-summary">A polished home for your best work.</p><div class="plan-rule"></div><ul class="plan-features"><li>Standard portfolio design</li><li>1 before-and-after slider</li><li>Project and contact sections</li></ul><a class="button plan-button" href="https://wa.me/919666166967?text=Hi%2C%20I%27m%20interested%20in%20the%20Basic%20VFX%20portfolio%20plan." target="_blank" rel="noopener noreferrer">Ask about Basic <span aria-hidden="true">↗</span></a></article>
+          <article class="glass-card pricing-card pricing-card--popular reveal delay-1"><span class="popular-badge">Most Selected</span><h3 class="plan-name">Pro</h3><div class="plan-price"><span>₹</span><strong>3,000</strong></div><p class="plan-summary">A premium showcase with room for more shots.</p><div class="plan-rule"></div><ul class="plan-features"><li>Premium portfolio design</li><li>3 before-and-after sliders</li><li>Custom domain</li></ul><a class="button plan-button" href="https://wa.me/919666166967?text=Hi%2C%20I%27m%20interested%20in%20the%20Pro%20VFX%20portfolio%20plan." target="_blank" rel="noopener noreferrer">Choose Pro <span aria-hidden="true">↗</span></a></article>
+          <article class="glass-card pricing-card reveal delay-2"><h3 class="plan-name">VIP Custom</h3><div class="plan-price"><span>₹</span><strong>4,500</strong></div><p class="plan-summary">Your own cinematic direction, built around your work.</p><div class="plan-rule"></div><ul class="plan-features"><li>Full cinematic custom design</li><li>Unlimited before-and-after sliders</li><li>Personalized to your portfolio</li></ul><a class="button plan-button" href="https://wa.me/919666166967?text=Hi%2C%20I%27m%20interested%20in%20the%20VIP%20Custom%20VFX%20portfolio%20plan." target="_blank" rel="noopener noreferrer">Ask about VIP <span aria-hidden="true">↗</span></a></article>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer><div class="wrap footer-inner"><a class="brand" href="#home"><span class="brand-mark">PL</span><span class="brand-copy">Prashanth-Web-Lab<small>BUILD · SHOW · GROW</small></span></a><p class="footer-copy">© <span id="year"></span> Prashanth-Web-Lab · Crafted for the next frame.</p><div class="footer-links"><a href="mailto:chinnaprshanth06@gmail.com">Email</a><a href="https://wa.me/919666166967" target="_blank" rel="noopener noreferrer">WhatsApp</a><a href="https://prashanth-web-lab.netlify.app/" target="_blank" rel="noopener noreferrer">Work &amp; portfolio</a></div></div></footer>
+  <script>
+    const revealItems = document.querySelectorAll(".reveal");
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reducedMotion || !("IntersectionObserver" in window)) {
+      revealItems.forEach((item) => item.classList.add("is-visible"));
+    } else {
+      const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        });
+      }, { threshold: 0.12, rootMargin: "0px 0px -35px 0px" });
+      revealItems.forEach((item) => revealObserver.observe(item));
+    }
 
-<!-- 1 About -->
-<section class="slide on"><div class="in two">
-<div><span class="tag">Introduction</span>
-<h1><span>Professional portfolio</span> websites for VFX students</h1>
-<p>I’m <b style="color:var(--fg)">M. Prashanth Reddy</b>, founder of Prashanth-Web-Lab. I design business, e-commerce, boutique, and custom websites — and now I also create <b style="color:var(--fg)">ready-made portfolio websites</b> for VFX students.</p>
-<div><span class="chip">Web Design</span><span class="chip">Corporate Sites</span><span class="chip">E-commerce</span><span class="chip">Custom Websites</span><span class="chip">Visiting Cards</span></div>
-<div class="row"><button class="btn" onclick="go(1)">Start seminar →</button></div></div>
-<div class="art" style="flex-direction:column;gap:12px;padding:28px"><div class="avatar"><img alt="Presenter" src="data:image/jpeg;base64,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"><em style="left:-14px;top:18%">🎬 VFX Portfolios</em><em style="right:-10px;bottom:22%">🌐 Web Designer</em></div></div>
-</div></section>
+    const range = document.getElementById("comparison-range");
+    const comparison = document.getElementById("comparison-slider");
+    range.addEventListener("input", () => {
+      comparison.style.setProperty("--split", range.value + "%");
+      range.setAttribute("aria-valuetext", range.value + "% final composite");
+    });
 
-<!-- 2 What is portfolio -->
-<section class="slide"><div class="in two">
-<div><span class="tag">What is a portfolio?</span>
-<h2>A portfolio is your work’s <span>online showcase</span></h2>
-<p>It brings your best VFX work — reels, breakdowns, and projects — together in one organized website. Share a single link to show your skills to any studio.</p>
-<div class="row" id="t2"></div><div class="panel" id="p2"></div></div>
-<div class="art" id="a2"></div>
-</div></section>
-
-<!-- 3 HR -->
-<section class="slide"><div class="in two">
-<div><span class="tag">How recruiters review portfolios</span>
-<h2>How VFX recruiters <span>use your portfolio</span></h2>
-<p>Studios receive many applications. Along with your resume, recruiters review your <b style="color:var(--fg)">work link</b> when deciding whom to shortlist. Select a step to learn more:</p>
-<div class="steps" id="t3"></div><div class="panel" id="p3" style="margin-top:12px"></div>
-<p style="font-size:14px">⚠️ A portfolio cannot guarantee a job, but strong work can improve your chances of being shortlisted.</p></div>
-<div class="art" id="a3"></div>
-</div></section>
-
-<!-- 4 Jobs -->
-<section class="slide"><div class="in">
-<span class="tag">VFX Jobs</span>
-<h2><span>VFX jobs and roles</span> today</h2>
-<p>Explore opportunities at studios, in streaming and film, advertising, games, and freelance work. Select a role to learn more:</p>
-<div class="row" id="t4"></div>
-<div class="two"><div class="panel" id="p4"></div>
-<div class="panel"><h3>🚀 How to pursue a VFX job</h3>
-<div class="num"><b>1</b><div><strong>Choose a role</strong> — roto, compositing, 3D, FX, and more.</div></div>
-<div class="num"><b>2</b><div><strong>Create a focused reel</strong> — show relevant work, not every skill.</div></div>
-<div class="num"><b>3</b><div><strong>Prepare your portfolio website</strong> and resume PDF.</div></div>
-<div class="num"><b>4</b><div><strong>Apply</strong> — use LinkedIn, studio career pages, and internships.</div></div>
-<div class="num"><b>5</b><div><strong>Keep your portfolio current</strong> — add new work as you create it.</div></div></div></div>
-</div></section>
-
-<!-- 5 Resume vs Portfolio -->
-<section class="slide"><div class="in">
-<span class="tag">At a glance</span>
-<h2>Resume <span>vs</span> Portfolio</h2>
-<div class="two"><div class="panel" style="padding:8px 12px"><table>
-<tr><th></th><th>📄 Resume</th><th>🎬 Portfolio</th></tr>
-<tr><td>What it says</td><td>Who you are</td><td>What you can do</td></tr>
-<tr><td>Format</td><td>1 page text PDF</td><td>Website: reel + images</td></tr>
-<tr><td>Skill evidence</td><td>Lists “Nuke” as a skill</td><td>Shows a shot created in Nuke</td></tr>
-<tr><td>Process</td><td>Limited detail</td><td>Can show a shot breakdown</td></tr>
-<tr><td>Purpose</td><td>Supporting document</td><td>Demonstrates your work</td></tr>
-<tr><td>Sharing</td><td>Attach a file</td><td>Share a single link</td></tr></table></div>
-<div class="art" id="a5" style="gap:10px"></div></div>
-</div></section>
-
-<!-- 6 Projects -->
-<section class="slide"><div class="in">
-<span class="tag">Project examples</span>
-<h2>Which projects should you <span>include in your portfolio?</span></h2>
-<p>Select a project to see what to include in its presentation.</p>
-<div class="gal" id="gal"></div><div class="panel" id="p6" style="margin-top:14px"></div>
-</div></section>
-
-<!-- 7 Mini site -->
-<section class="slide"><div class="in two">
-<div><span class="tag">Sample</span>
-<h2>A student portfolio <span>in action</span></h2>
-<p>This sample shows the kind of portfolio I can create. Try the navigation buttons, reel player, and project cards to explore the demo.</p>
-<div class="row"><span class="chip">Fast loading</span><span class="chip">Mobile friendly</span><span class="chip">Shareable link</span></div></div>
-<div class="site"><div class="bar"><b>🎞 Student Name · VFX Artist</b><button class="on" data-v="0">Reel</button><button data-v="1">Projects</button><button data-v="2">Resume</button><button data-v="3">Contact</button></div><div class="view" id="vw"></div></div>
-</div></section>
-
-<!-- 8 Services -->
-<section class="slide"><div class="in two">
-<div><span class="tag">Portfolio services</span>
-<h2>A ready-made <span>portfolio website</span></h2>
-<p>Share your work with me, and I’ll design and host your website.</p>
-<div class="num"><b>1</b><div><strong>Gather your work</strong> — reel, images, and breakdowns.</div></div>
-<div class="num"><b>2</b><div><strong>Design</strong> — a professional layout tailored to your style.</div></div>
-<div class="num"><b>3</b><div><strong>Build and host</strong> — get your website live.</div></div>
-<div class="num"><b>4</b><div><strong>Handover</strong> — receive your site and a link to share with your resume.</div></div>
-<div class="row"><a class="btn" href="https://wa.me/919666166967" target="_blank" rel="noopener">💬 WhatsApp</a><a class="tb" href="mailto:chinnaprshanth06@gmail.com">✉ Email</a><a class="tb" href="https://prashanth-web-lab.netlify.app/" target="_blank" rel="noopener">🌐 My work</a></div>
-<p style="font-size:14px">Ask about pricing and packages on WhatsApp. Thank you! 🙌</p></div>
-<div class="art" id="a8"></div>
-</div></section>
-
-<div class="nav"><button class="tb" id="pv">← Back</button><div class="dots" id="dt"></div><button class="btn" id="nx">Next →</button></div>
-
-<script>
-const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
-const sl=$$('.slide');let cur=0;$('#dt').innerHTML=sl.map(()=>'<i></i>').join('');
-function go(n){cur=Math.max(0,Math.min(sl.length-1,n));sl.forEach((s,i)=>s.classList.toggle('on',i==cur));$$('#dt i').forEach((d,i)=>d.classList.toggle('on',i==cur));$('#pv').style.visibility=cur?'visible':'hidden';$('#nx').style.visibility=cur<sl.length-1?'visible':'hidden'}
-$('#pv').onclick=()=>go(cur-1);$('#nx').onclick=()=>go(cur+1);
-addEventListener('keydown',e=>{if(e.key=='ArrowRight')go(cur+1);if(e.key=='ArrowLeft')go(cur-1)});
-let sx=0;addEventListener('touchstart',e=>sx=e.touches[0].clientX,{passive:true});
-addEventListener('touchend',e=>{const d=e.changedTouches[0].clientX-sx;if(Math.abs(d)>90)go(cur+(d<0?1:-1))});
-go(0);
-function tabs(btn,pan,data,fn,cls){
-  $(btn).innerHTML=data.map((d,i)=>`<button class="tb" data-i="${i}">${d.i||''} ${d.k}</button>`).join('');
-  const show=i=>{$$(btn+' .tb').forEach((b,j)=>b.classList.toggle('on',i==j));$(pan).innerHTML=fn(data[i],i)};
-  $$(btn+' .tb').forEach(b=>b.onclick=()=>show(+b.dataset.i));show(0);return show}
-const card=d=>`<h3>${d.i||''} ${d.k}</h3><p>${d.d}</p>${d.t?`<p>💡 <b style="color:var(--c1)">${d.l||'Tip'}:</b> ${d.t}</p>`:''}`;
-
-/* vector illustrations */
-const thumb=(t)=>{const o={
-roto:'<rect width="160" height="100" fill="#1e293b"/><circle cx="80" cy="38" r="14" fill="#475569"/><path d="M52 90q0-34 28-34t28 34z" fill="#475569"/><g fill="none" stroke="#22d3ee" stroke-width="2" stroke-dasharray="4 3"><circle cx="80" cy="38" r="17"/><path d="M48 90q0-38 32-38t32 38"/></g>',
-paint:'<rect width="160" height="100" fill="#475569"/><rect y="68" width="160" height="32" fill="#1f2937"/><rect x="30" y="30" width="30" height="38" fill="#334155"/><rect x="100" y="20" width="36" height="48" fill="#334155"/><path d="M0 18L160 40" stroke="#fbbf24" stroke-width="2" stroke-dasharray="6 4" opacity=".7"/><path d="M70 10l14 14m0-14L70 24" stroke="#f87171" stroke-width="3"/>',
-sky:'<rect width="160" height="100" fill="#64748b"/><rect x="80" width="80" height="100" fill="#f97316" opacity=".75"/><circle cx="125" cy="34" r="14" fill="#fde68a"/><g fill="#0f172a"><rect x="14" y="52" width="24" height="48"/><rect x="44" y="40" width="22" height="60"/><rect x="86" y="58" width="26" height="42"/><rect x="118" y="46" width="30" height="54"/></g>',
-comp:'<rect width="160" height="100" fill="#334155"/><rect y="72" width="160" height="28" fill="#1f2937"/><g fill="#1e293b"><rect x="12" y="38" width="26" height="40"/><rect x="120" y="30" width="28" height="48"/></g><circle cx="80" cy="62" r="20" fill="#a78bfa"/><circle cx="74" cy="55" r="7" fill="#fff" opacity=".45"/><ellipse cx="80" cy="84" rx="22" ry="4" fill="#000" opacity=".4"/>',
-fx:'<rect width="160" height="100" fill="#0b0f1e"/><circle cx="80" cy="62" r="42" fill="#ef4444" opacity=".25"/><circle cx="80" cy="62" r="28" fill="#fb923c" opacity=".7"/><circle cx="80" cy="62" r="14" fill="#fde68a"/><g fill="#fde68a"><circle cx="52" cy="28" r="2"/><circle cx="112" cy="22" r="2.5"/><circle cx="124" cy="48" r="2"/><circle cx="38" cy="52" r="1.5"/></g>',
-d3:'<rect width="160" height="100" fill="#1e1b4b"/><path d="M80 18l34 18v36L80 90 46 72V36z" fill="#7c3aed"/><path d="M80 18l34 18-34 18-34-18z" fill="#c4b5fd"/><path d="M80 54v36L46 72V36z" fill="#5b21b6"/>'};
-return `<svg viewBox="0 0 160 100">${o[t]}</svg>`};
-
-const browser=(inner)=>`<svg viewBox="0 0 320 230"><rect x="6" y="6" width="308" height="218" rx="14" fill="#0b1230" stroke="#2c3a78"/><rect x="6" y="6" width="308" height="28" rx="14" fill="#16204a"/><circle cx="24" cy="20" r="4" fill="#f87171"/><circle cx="38" cy="20" r="4" fill="#fbbf24"/><circle cx="52" cy="20" r="4" fill="#34d399"/><rect x="74" y="13" width="170" height="14" rx="7" fill="#0b1230"/>${inner}</svg>`;
-const reel='<rect x="22" y="48" width="276" height="94" rx="10" fill="#5b21b6"/><circle cx="160" cy="95" r="20" fill="#fff" opacity=".9"/><path d="M154 85l16 10-16 10z" fill="#5b21b6"/><rect x="22" y="152" width="84" height="56" rx="8" fill="#0e7490"/><rect x="118" y="152" width="84" height="56" rx="8" fill="#1d4ed8"/><rect x="214" y="152" width="84" height="56" rx="8" fill="#be185d"/>';
-$('#a2').innerHTML=browser(reel);
-$('#a3').innerHTML=`<svg viewBox="0 0 320 240"><rect x="30" y="14" width="260" height="160" rx="12" fill="#0b1230" stroke="#2c3a78"/><rect x="42" y="26" width="150" height="92" rx="8" fill="#5b21b6"/><circle cx="117" cy="72" r="16" fill="#fff"/><path d="M112 63l14 9-14 9z" fill="#5b21b6"/><g fill="#334155"><rect x="204" y="26" width="74" height="10" rx="5"/><rect x="204" y="46" width="60" height="10" rx="5"/><rect x="204" y="66" width="68" height="10" rx="5"/></g><g stroke="#34d399" stroke-width="3" fill="none"><path d="M208 112l6 6 10-12"/></g><rect x="42" y="132" width="236" height="10" rx="5" fill="#16204a"/><rect x="42" y="132" width="120" height="10" rx="5" fill="#22d3ee"/><rect x="130" y="174" width="60" height="14" fill="#16204a"/><rect x="100" y="188" width="120" height="8" rx="4" fill="#16204a"/><circle cx="262" cy="198" r="26" fill="#22d3ee22" stroke="#22d3ee" stroke-width="4"/><path d="M281 217l22 20" stroke="#22d3ee" stroke-width="6" stroke-linecap="round"/><text x="46" y="162" fill="#9db0d3" font-size="11">HR review · reel first</text></svg>`;
-$('#a5').innerHTML=`<svg style="width:42%" viewBox="0 0 100 130"><rect width="100" height="130" rx="6" fill="#f4f6fa"/><rect x="10" y="12" width="45" height="8" fill="#334155"/><g fill="#94a3b8"><rect x="10" y="30" width="80" height="4"/><rect x="10" y="40" width="70" height="4"/><rect x="10" y="50" width="78" height="4"/><rect x="10" y="68" width="40" height="6" fill="#334155"/><rect x="10" y="80" width="80" height="4"/><rect x="10" y="90" width="64" height="4"/><rect x="10" y="100" width="72" height="4"/></g></svg><svg style="width:55%" viewBox="0 0 320 230">${browser(reel).replace(/<\/?svg[^>]*>/g,'')}</svg>`;
-$('#a8').innerHTML=`<svg viewBox="0 0 320 240"><g font-size="12" fill="#eaf2ff" text-anchor="middle"><rect x="10" y="20" width="64" height="64" rx="14" fill="#1d4ed8"/><text x="42" y="58" font-size="26">🎞</text><rect x="128" y="20" width="64" height="64" rx="14" fill="#7c3aed"/><text x="160" y="58" font-size="26">🎨</text><rect x="246" y="20" width="64" height="64" rx="14" fill="#0e7490"/><text x="278" y="58" font-size="26">⚙️</text><rect x="69" y="150" width="64" height="64" rx="14" fill="#be185d"/><text x="101" y="188" font-size="26">🌐</text><rect x="187" y="150" width="64" height="64" rx="14" fill="#15803d"/><text x="219" y="188" font-size="26">✅</text><text x="42" y="102">Work</text><text x="160" y="102">Design</text><text x="278" y="102">Build</text><text x="101" y="232">Host</text><text x="219" y="232">Handover</text></g><g stroke="#22d3ee" stroke-width="2" stroke-dasharray="5 4" fill="none"><path d="M76 52h50M194 52h50M278 88q0 50-80 80M187 182h-52"/></g></svg>`;
-
-/* slide 2 */
-tabs('#t2','#p2',[
-{i:'🎬',k:'Show your work',d:'Keep your reel and projects together in one clear, easy-to-browse place.'},
-{i:'🔗',k:'Share a link',d:'Send one link on WhatsApp, LinkedIn, email, or anywhere else.'},
-{i:'💼',k:'Apply for jobs',d:'Include your portfolio link with your resume to give recruiters proof of your skills.'},
-{i:'🔍',k:'Get discovered',d:'Recruiters can find your work online and contact you.'}],card);
-
-/* slide 3 */
-tabs('#t3','#p3',[
-{k:'1. Application',d:'The artist submits a resume and portfolio link.'},
-{k:'2. Portfolio review',d:'A recruiter opens the link and plays the demo reel.'},
-{k:'3. First shots',d:'The opening shots help recruiters decide whether to keep watching, so lead with your strongest work.'},
-{k:'4. Breakdown',d:'Reviewers check your role and process, from plate to final. This helps show your actual contribution.'},
-{k:'5. Shortlist',d:'Promising applications may go to a supervisor, followed by an artist test or interview.'}],(d)=>`<h3>${d.k}</h3><p>${d.d}</p>`);
-
-/* slide 4 */
-tabs('#t4','#p4',[
-{i:'✂️',k:'Roto / Paint',d:'Roto isolates a subject; paint removes wires or unwanted objects. These are common entry-level roles.',t:'Show roto, wire removal, and cleanup before-and-after shots.',l:'Portfolio tip'},
-{i:'🧩',k:'Compositor',d:'Compositors combine plates, CG, and other elements into a final shot.',t:'Show complete Nuke or After Effects shots with breakdowns.',l:'Portfolio tip'},
-{i:'📍',k:'Matchmove',d:'Matchmove artists track cameras or objects so 3D elements fit the footage.',t:'Show tracked shots where CG objects stay firmly aligned.',l:'Portfolio tip'},
-{i:'🔥',k:'FX Artist',d:'Create fire, smoke, water, and destruction simulations.',t:'Show Houdini or Blender simulations, wireframes, and final renders.',l:'Portfolio tip'},
-{i:'🧊',k:'3D / Animation',d:'Work in modeling, texturing, lighting, and animation.',t:'Show turntables, wireframes, and lighting breakdowns.',l:'Portfolio tip'}],card);
-
-/* slide 6 */
-const PJ=[['roto','Roto','Subject-isolation shot. Show the original, matte, and final result as three steps.'],['paint','Cleanup / Paint','Remove a wire, microphone, or logo. Show before and after images with a brief explanation.'],['sky','Sky Replacement','Show the matte, color match, original plate, and final result; pay attention to edge quality.'],['comp','CG Integration','Composite a 3D object into live footage. Show shadows, lighting matches, and a breakdown.'],['fx','Fire / Smoke FX','Show the simulation viewport alongside the final render.'],['d3','3D Model','For a product or prop, show a turntable, wireframe, and texture maps.']];
-$('#gal').innerHTML=PJ.map((p,i)=>`<button data-i="${i}">${thumb(p[0])}<span>${p[1]}</span></button>`).join('');
-const sh6=i=>{$$('#gal button').forEach((b,j)=>b.classList.toggle('on',i==j));$('#p6').innerHTML=`<h3>${PJ[i][1]}</h3><p>${PJ[i][2]}</p>`};
-$$('#gal button').forEach(b=>b.onclick=()=>sh6(+b.dataset.i));sh6(0);
-
-/* slide 7 mini site */
-const V=[()=>`<div class="play" id="pl">▶<div class="pb" id="pbr"></div></div><p style="margin:8px 0 0">Select the play button to preview the demo reel.</p>`,
-()=>`<div class="pj"><div style="background:linear-gradient(135deg,#be185d,#7c3aed)">Fire FX</div><div style="background:linear-gradient(135deg,#0e7490,#1d4ed8)">Sky Replacement</div><div style="background:linear-gradient(135deg,#b45309,#be123c)">CG Compositing</div></div><p id="pj">Select a project card to learn more.</p>`,
-()=>`<h3 style="margin:0 0 8px">Resume</h3><p>Software: <span class="chip">Nuke</span><span class="chip">After Effects</span><span class="chip">Blender</span></p><button class="btn">⬇ Download PDF</button>`,
-()=>`<h3 style="margin:0 0 8px">Contact</h3><p>📧 name@email.com<br>💼 linkedin.com/in/name<br>🎨 artstation.com/name</p>`];
-function sv(i){$$('.site .bar button').forEach((b,j)=>b.classList.toggle('on',i==j));$('#vw').innerHTML=V[i]();
-  if(i==0)$('#pl').onclick=()=>{const p=$('#pbr');p.classList.remove('go');void p.offsetWidth;p.classList.add('go');$('#pl').firstChild.textContent='⏸'};
-  if(i==1)$$('.pj div').forEach(d=>d.onclick=()=>$('#pj').textContent='▶ "'+d.textContent+'" — a breakdown video would open here.')}
-$$('.site .bar button').forEach(b=>b.onclick=()=>sv(+b.dataset.v));sv(0);
-</script>
-</body></html>
+    const canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+    if (canHover) {
+      document.querySelectorAll(".glass-card").forEach((card) => {
+        card.addEventListener("pointermove", (event) => {
+          const bounds = card.getBoundingClientRect();
+          const x = (event.clientX - bounds.left) / bounds.width;
+          const y = (event.clientY - bounds.top) / bounds.height;
+          const scale = card.classList.contains("pricing-card--popular") ? " scale(1.045)" : "";
+          card.style.transform = "perspective(1000px) rotateX(" + ((0.5 - y) * 3) + "deg) rotateY(" + ((x - 0.5) * 4) + "deg)" + scale;
+        });
+        card.addEventListener("pointerleave", () => { card.style.transform = ""; });
+      });
+    }
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
