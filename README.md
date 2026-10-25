@@ -1,23 +1,24 @@
-# VFX Portfolio Website
+# VFX Portfolio Seminar Website
 
-A cinematic portfolio-services website by **Prashanth-Web-Lab**, designed to help VFX artists present their work and explore portfolio website plans.
+A fully interactive seminar presentation website built for VFX students by **Prashanth-Web-Lab**.
 
-## Features
-- Dark, responsive interface with glassmorphism and cyan studio accents
-- Scroll-triggered section reveals and interactive 3D card tilt
-- Interactive before-and-after green-screen compositing demo
-- Resume-versus-portfolio comparison
-- Three portfolio plans: Basic (₹1,500), Pro (₹3,000), and VIP Custom (₹4,500)
-- Direct WhatsApp, email, and portfolio links
-- Reduced-motion accessibility support
+## 🎬 About
+This is an eight-slide interactive seminar that helps VFX students:
+- Understand what a portfolio is and how it helps present their work
+- Learn how recruiters review resumes, demo reels, and portfolio links
+- Explore VFX roles, including Roto, Paint, Compositing, Matchmove, FX, and 3D
+- Compare resumes and portfolios
+- Choose project examples and learn what to show in each breakdown
+- Explore an interactive sample portfolio
+- Learn about portfolio website design services from Prashanth-Web-Lab
 
-## Preview
-Open `index.html` in any modern browser. No build step or external dependencies are required.
+## 🚀 Live Demo
+Open `index.html` in any browser — no build step required.
 
-## Contact
+## 📞 Contact
 - **WhatsApp**: [+91 96661 66967](https://wa.me/919666166967)
-- **Email**: [chinnaprshanth06@gmail.com](mailto:chinnaprshanth06@gmail.com)
+- **Email**: chinnaprshanth06@gmail.com
 - **Portfolio**: [prashanth-web-lab.netlify.app](https://prashanth-web-lab.netlify.app/)
 
-## Technology
-Pure HTML, CSS, and JavaScript with inline SVG artwork.
+## 🛠 Tech
+Pure HTML + CSS + JavaScript — no dependencies, no frameworks.
