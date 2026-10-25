@@ -190,6 +190,15 @@ p, li { color: var(--mut); font-size: clamp(14px, 1.8vw, 16px); line-height: 1.7
 }
 .panel h3 { margin: 0 0 6px; font-size: 20px; }
 .panel p { margin: 6px 0; }
+.panel .feature-media {
+  display: block; width: 100%; max-height: 220px; object-fit: contain;
+  margin: 14px auto 0; border-radius: 12px; background: var(--bg);
+}
+.review-points { margin: 10px 0 0 18px; display: grid; gap: 4px; }
+.review-visual { display: block; width: 100%; max-height: 340px; object-fit: contain; border-radius: 12px; }
+.panel video.feature-media {
+  height: auto; max-height: none; aspect-ratio: 16 / 9;
+}
 
 .chip {
   display: inline-block; background: rgba(34,211,238,0.12);
@@ -331,7 +340,7 @@ body::before {
   </div>
   <div class="art" style="flex-direction:column;gap:12px;padding:28px">
     <div class="avatar">
-      <img alt="Presenter" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260' viewBox='0 0 260 260'%3E%3Crect width='260' height='260' rx='130' fill='%231e293b'/%3E%3Ccircle cx='130' cy='100' r='45' fill='%23475569'/%3E%3Cpath d='M60 260q0-70 70-70t70 70z' fill='%23475569'/%3E%3Ctext x='130' y='115' text-anchor='middle' fill='%2322d3ee' font-size='32' font-family='system-ui'%3EPR%3C/text%3E%3C/svg%3E">
+      <img alt="M. Prashanth Reddy" src="public/prashanth.jpeg.jpeg">
       <em style="left:-14px;top:18%">🎬 VFX Portfolios</em>
       <em style="right:-10px;bottom:22%">🌐 Web Designer</em>
     </div>
@@ -341,7 +350,7 @@ body::before {
 
 <!-- PAGE 2: What is a Portfolio? -->
 <section class="slide" data-page="2">
-<div class="in two">
+<div class="in">
   <div>
     <span class="tag">What is a portfolio?</span>
     <h2>A portfolio is your work's <span>online showcase</span></h2>
@@ -349,7 +358,6 @@ body::before {
     <div class="row" id="t2"></div>
     <div class="panel" id="p2"></div>
   </div>
-  <div class="art" id="a2"></div>
 </div>
 </section>
 
@@ -568,12 +576,9 @@ const thumb = (t) => {
   return `<svg viewBox="0 0 160 100">${o[t]}</svg>`;
 };
 
-const browser = (inner) => `<svg viewBox="0 0 320 230"><rect x="6" y="6" width="308" height="218" rx="14" fill="#0b1230" stroke="#2c3a78"/><rect x="6" y="6" width="308" height="28" rx="14" fill="#16204a"/><circle cx="24" cy="20" r="4" fill="#f87171"/><circle cx="38" cy="20" r="4" fill="#fbbf24"/><circle cx="52" cy="20" r="4" fill="#34d399"/><rect x="74" y="13" width="170" height="14" rx="7" fill="#0b1230"/>${inner}</svg>`;
 const reel = '<rect x="22" y="48" width="276" height="94" rx="10" fill="#5b21b6"/><circle cx="160" cy="95" r="20" fill="#fff" opacity=".9"/><path d="M154 85l16 10-16 10z" fill="#5b21b6"/><rect x="22" y="152" width="84" height="56" rx="8" fill="#0e7490"/><rect x="118" y="152" width="84" height="56" rx="8" fill="#1d4ed8"/><rect x="214" y="152" width="84" height="56" rx="8" fill="#be185d"/>';
 
-$('#a2').innerHTML = browser(reel);
-
-$('#a3').innerHTML = `<svg viewBox="0 0 320 240"><rect x="30" y="14" width="260" height="160" rx="12" fill="#0b1230" stroke="#2c3a78"/><rect x="42" y="26" width="150" height="92" rx="8" fill="#5b21b6"/><circle cx="117" cy="72" r="16" fill="#fff"/><path d="M112 63l14 9-14 9z" fill="#5b21b6"/><g fill="#334155"><rect x="204" y="26" width="74" height="10" rx="5"/><rect x="204" y="46" width="60" height="10" rx="5"/><rect x="204" y="66" width="68" height="10" rx="5"/></g><g stroke="#34d399" stroke-width="3" fill="none"><path d="M208 112l6 6 10-12"/></g><rect x="42" y="132" width="236" height="10" rx="5" fill="#16204a"/><rect x="42" y="132" width="120" height="10" rx="5" fill="#22d3ee"/><rect x="130" y="174" width="60" height="14" fill="#16204a"/><rect x="100" y="188" width="120" height="8" rx="4" fill="#16204a"/><circle cx="262" cy="198" r="26" fill="#22d3ee22" stroke="#22d3ee" stroke-width="4"/><path d="M281 217l22 20" stroke="#22d3ee" stroke-width="6" stroke-linecap="round"/><text x="46" y="162" fill="#9db0d3" font-size="11">HR review · reel first</text></svg>`;
+$('#a3').innerHTML = `<svg viewBox="0 0 320 240"><defs><clipPath id="recruiterScreen"><rect x="42" y="26" width="150" height="92" rx="8"/></clipPath></defs><rect x="30" y="14" width="260" height="160" rx="12" fill="#0b1230" stroke="#2c3a78"/><image href="public/show-you-work-poster.jpg" x="42" y="26" width="150" height="92" preserveAspectRatio="xMidYMid slice" clip-path="url(#recruiterScreen)"/><circle cx="117" cy="72" r="16" fill="#fff"/><path d="M112 63l14 9-14 9z" fill="#5b21b6"/><g fill="#334155"><rect x="204" y="26" width="74" height="10" rx="5"/><rect x="204" y="46" width="60" height="10" rx="5"/><rect x="204" y="66" width="68" height="10" rx="5"/></g><g stroke="#34d399" stroke-width="3" fill="none"><path d="M208 112l6 6 10-12"/></g><rect x="42" y="132" width="236" height="10" rx="5" fill="#16204a"/><rect x="42" y="132" width="120" height="10" rx="5" fill="#22d3ee"/><rect x="130" y="174" width="60" height="14" fill="#16204a"/><rect x="100" y="188" width="120" height="8" rx="4" fill="#16204a"/><circle cx="262" cy="198" r="26" fill="#22d3ee22" stroke="#22d3ee" stroke-width="4"/><path d="M281 217l22 20" stroke="#22d3ee" stroke-width="6" stroke-linecap="round"/><text x="46" y="162" fill="#9db0d3" font-size="11">HR review · reel first</text></svg>`;
 
 $('#a5').innerHTML = `<svg style="width:42%" viewBox="0 0 100 130"><rect width="100" height="130" rx="6" fill="#f4f6fa"/><rect x="10" y="12" width="45" height="8" fill="#334155"/><g fill="#94a3b8"><rect x="10" y="30" width="80" height="4"/><rect x="10" y="40" width="70" height="4"/><rect x="10" y="50" width="78" height="4"/><rect x="10" y="68" width="40" height="6" fill="#334155"/><rect x="10" y="80" width="80" height="4"/><rect x="10" y="90" width="64" height="4"/><rect x="10" y="100" width="72" height="4"/></g></svg><svg style="width:55%" viewBox="0 0 320 230"><rect x="6" y="6" width="308" height="218" rx="14" fill="#0b1230" stroke="#2c3a78"/><rect x="6" y="6" width="308" height="28" rx="14" fill="#16204a"/><circle cx="24" cy="20" r="4" fill="#f87171"/><circle cx="38" cy="20" r="4" fill="#fbbf24"/><circle cx="52" cy="20" r="4" fill="#34d399"/><rect x="74" y="13" width="170" height="14" rx="7" fill="#0b1230"/>${reel}</svg>`;
 
@@ -581,20 +586,30 @@ $('#a8').innerHTML = `<svg viewBox="0 0 320 240"><g font-size="12" fill="#eaf2ff
 
 /* ── Slide 2 tabs ── */
 tabs('#t2', '#p2', [
-  { i: '🎬', k: 'Show your work', d: 'Keep your reel and projects together in one clear, easy-to-browse place.' },
-  { i: '🔗', k: 'Share a link', d: 'Send one link on WhatsApp, LinkedIn, email, or anywhere else.' },
-  { i: '💼', k: 'Apply for jobs', d: 'Include your portfolio link with your resume to give recruiters proof of your skills.' },
-  { i: '🔍', k: 'Get discovered', d: 'Recruiters can find your work online and contact you.' }
-], card);
+  { i: '🎬', k: 'Show your work', d: 'Keep your reel and projects together in one clear, easy-to-browse place.', media: 'show you work.mp4', type: 'video' },
+  { i: '🔗', k: 'Share a link', d: 'Send one link on WhatsApp, LinkedIn, email, or anywhere else.', media: 'shere a link.jpeg.jpeg' },
+  { i: '💼', k: 'Apply for jobs', d: 'Include your portfolio link with your resume to give recruiters proof of your skills.', media: 'Apply for jobs.jpeg.jpeg' },
+  { i: '🔍', k: 'Get discovered', d: 'Recruiters can find your work online and contact you.', media: 'get discovered.jpeg.jpeg' }
+], d => {
+  const src = `public/${encodeURI(d.media)}`;
+  const media = d.type === 'video'
+    ? `<video class="feature-media" controls playsinline preload="none" poster="public/show-you-work-poster.jpg" aria-label="${d.k} video"><source src="${src}" type="video/mp4">Your browser does not support video playback.</video>`
+    : `<img class="feature-media" src="${src}" alt="${d.k}">`;
+  return `${card(d)}${media}`;
+});
 
 /* ── Slide 3 tabs ── */
 tabs('#t3', '#p3', [
-  { k: '1. Application', d: 'The artist submits a resume and portfolio link.' },
-  { k: '2. Portfolio review', d: 'A recruiter opens the link and plays the demo reel.' },
-  { k: '3. First shots', d: 'The opening shots help recruiters decide whether to keep watching, so lead with your strongest work.' },
-  { k: '4. Breakdown', d: 'Reviewers check your role and process, from plate to final. This helps show your actual contribution.' },
-  { k: '5. Shortlist', d: 'Promising applications may go to a supervisor, followed by an artist test or interview.' }
-], d => `<h3>${d.k}</h3><p>${d.d}</p>`);
+  { k: '1. Application', d: 'The artist submits a resume and portfolio link.', image: 'Apply for jobs.jpeg.jpeg', alt: 'Artist submitting a resume and portfolio link', points: ['Attach a clear, current resume.', 'Add one working portfolio URL.', 'Apply for roles that match your skills.'] },
+  { k: '2. Portfolio review', d: 'A recruiter opens the portfolio and reviews the work.', image: 'shere a link.jpeg.jpeg', alt: 'Portfolio website being shared with a recruiter', points: ['Make the portfolio link easy to open.', 'Organize work so it is quick to browse.', 'Include your strongest VFX projects.'] },
+  { k: '3. First shots', d: 'The opening shots help recruiters decide whether to keep watching.', image: 'show-you-work-poster.jpg', alt: 'VFX artist flying through a composited city shot', points: ['Lead with your strongest finished shot.', 'Show relevant work for the role.', 'Keep the opening clear and engaging.'] },
+  { k: '4. Breakdown', d: 'Reviewers check your role and process, from source plate to final shot.', image: 'shot-breakdown.jpg', alt: 'VFX breakdown showing green-screen input and final composite', points: ['Show the original plate or input.', 'Include matte, layers, or key process steps.', 'Label your personal contribution clearly.'] },
+  { k: '5. Shortlist', d: 'Promising applications may go to a supervisor for the next step.', image: 'get discovered.jpeg.jpeg', alt: 'Recruiter discovering a VFX artist portfolio', points: ['Keep your contact details easy to find.', 'Make your reel and role clear.', 'Be ready for an interview or artist test.'] }
+], d => {
+  const image = `public/${encodeURI(d.image)}`;
+  $('#a3').innerHTML = `<img class="review-visual" src="${image}" alt="${d.alt}">`;
+  return `<h3>${d.k}</h3><p>${d.d}</p><ul class="review-points">${d.points.map(point => `<li>${point}</li>`).join('')}</ul>`;
+});
 
 /* ── Slide 4 tabs ── */
 tabs('#t4', '#p4', [
