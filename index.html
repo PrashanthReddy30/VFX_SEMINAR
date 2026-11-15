@@ -393,7 +393,7 @@ body::before {
 <!-- HEADER -->
 <header>
   <b>◆ Prashanth<i>-Web-Lab</i></b>
-  <span class="page-num" id="pageNum">1 / 8</span>
+  <span class="page-num" id="pageNum">1 / 9</span>
 </header>
 
 <!-- PROGRESS BAR -->
@@ -609,12 +609,23 @@ body::before {
     <p style="font-size:14px; margin-top:10px">Message me on WhatsApp to get started. Thank you! 🙌</p>
   </div>
 
-  <div style="text-align:center; margin-top: 28px; padding: 22px 18px; border: 1px solid rgba(255,255,255,0.12); border-radius: 18px; background: rgba(15,23,49,0.7);">
-    <h3 style="font-size: clamp(22px, 3vw, 30px); margin-bottom: 12px; color: var(--fg);">Thank you so much, everyone!</h3>
-    <p style="font-size: clamp(15px, 1.8vw, 18px); color: var(--mut); max-width: 720px; margin: 0 auto; line-height: 1.8;">
-      Build your own portfolio, set up your career, and step up your VFX journey!<br>
-      If you need a professional portfolio website designed, please check out the Professional Packages or reach out to me via WhatsApp / Email. All the best!
-    </p>
+</div>
+</section>
+
+<!-- PAGE 9: Thank You -->
+<section class="slide" data-page="9">
+<div class="in" style="text-align:center; margin:auto;">
+  <span class="tag">Thank you</span>
+  <h1>Thank you so much, <span>everyone!</span></h1>
+  <p style="font-size:clamp(16px, 2vw, 20px); max-width:760px; margin:12px auto;">
+    Build your own portfolio, set up your career, and step up your VFX journey!
+  </p>
+  <p style="max-width:760px; margin:12px auto 20px;">
+    If you need a professional portfolio website designed, please check out the <a href="#" onclick="goToSlide(7); return false;" style="color:var(--c1);">Professional Packages</a> or reach out to me via WhatsApp / Email. All the best!
+  </p>
+  <div class="row" style="justify-content:center">
+    <a class="btn" href="https://wa.me/919666166967" target="_blank" rel="noopener">💬 WhatsApp</a>
+    <a class="tb" href="mailto:chinnaprshanth06@gmail.com">✉ Email</a>
   </div>
 </div>
 </section>
@@ -634,7 +645,7 @@ const $$ = s => [...document.querySelectorAll(s)];
 /* ── Slide Navigation ── */
 const slides = $$('.slide');
 const total = slides.length;
-let current = 0;
+let current = -1;
 
 // Build dots
 $('#dots').innerHTML = slides.map((_, i) => '<i></i>').join('');
@@ -643,7 +654,7 @@ function goToSlide(n) {
   if (n < 0 || n >= total || n === current) return;
 
   // Exit current slide
-  slides[current].classList.remove('active');
+  if (current >= 0) slides[current].classList.remove('active');
 
   // Enter new slide
   current = n;
